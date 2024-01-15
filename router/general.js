@@ -24,7 +24,7 @@ public_users.post("/register", (req,res) => {
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
   let promise = new Promise((resolve, reject) => {
-    resolve(JSON.stringify(books, null, 4));
+    resolve(JSON.stringify({books: books}, null, 4));
   })
   promise
   .then((data) => {
@@ -63,7 +63,7 @@ public_users.get('/author/:author',function (req, res) {
     if (Object.keys(author_books).length == 0) {
       reject("No books found.");
     }
-    resolve(JSON.stringify(author_books, null, 4));
+    resolve(JSON.stringify({booksbyauthor: author_books}, null, 4));
   });
   promise
   .then((data) => {
@@ -83,7 +83,7 @@ public_users.get('/title/:title',function (req, res) {
     if (Object.keys(title_books).length == 0) {
       reject("No books found.");
     }
-    resolve(JSON.stringify(title_books, null, 4));
+    resolve(JSON.stringify({bookbytitle: title_books}, null, 4));
   });
   promise
   .then((data) => {
